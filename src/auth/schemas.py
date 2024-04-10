@@ -10,20 +10,15 @@ class UserRead(schemas.BaseUser[UUID]):
     username: str | None
     fullname: str | None
     phone_number: str | None
-    date_of_birth: date | None
-    profile_picture_url: str | None
 
 
 class UserCreate(schemas.BaseUserCreate):
     username: str
     fullname: str | None
     phone_number: str | None
-    date_of_birth: date | None
 
 
 class UserUpdate(schemas.BaseUserUpdate):
     username: str | None
     fullname: str | None
     phone_number: str | None
-    date_of_birth: date | None
-    profile_picture_url: str | None
