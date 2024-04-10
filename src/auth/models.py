@@ -18,5 +18,3 @@ class User(SQLAlchemyBaseUserTableUUID, Base):
     is_superuser = Column(Boolean, default=False, nullable=False)
     is_verified = Column(Boolean, default=False, nullable=False)
     phone_number = Column(String)
-    date_of_birth = Column(Date)
-    profile_picture_url = Column(String)

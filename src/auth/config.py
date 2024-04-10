@@ -25,7 +25,7 @@ auth_backend = AuthenticationBackend(
     transport=cookie_transport,
     get_strategy=get_redis_strategy,
 )
-#
+
 fastapi_users = FastAPIUsers[User, uuid.UUID](
     get_user_manager,
     [auth_backend],
