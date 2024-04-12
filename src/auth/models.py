@@ -1,4 +1,6 @@
-from sqlalchemy import Column, String, Boolean, DateTime, Date
+from datetime import datetime
+from sqlalchemy import ForeignKey, String
+from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.sql import func
 from fastapi_users.db import SQLAlchemyBaseUserTableUUID
 
@@ -8,13 +10,15 @@ from src.database import Base
 class User(SQLAlchemyBaseUserTableUUID, Base):
     __tablename__ = "user"
 
-    email = Column(String, unique=True, nullable=False, index=True)
-    username = Column(String, nullable=False, unique=True, index=True)
-    fullname = Column(String)
-    registered_at = Column(DateTime(timezone=True), server_default=func.now())
-    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
-    hashed_password = Column(String(length=1024), nullable=False)
-    is_active = Column(Boolean, default=True, nullable=False)
-    is_superuser = Column(Boolean, default=False, nullable=False)
-    is_verified = Column(Boolean, default=False, nullable=False)
-    phone_number = Column(String)
+    email: Mapped[str] = mapped_column(unique=True, index=True)
+    username: Mapped[str] = mapped_column(unique=True, index=True)
+    fullname: Mapped[str | None]
+    registered_at: Mapped[datetime] = mapped_column(server_default=func.now())
+    updated_at: Mapped[datetime | None] = mapped_column(
+        server_default=func.now(), onupdate=datetime.now
+    )
+    hashed_password: Mapped[str] = mapped_column(String(1024))
+    is_active: Mapped[bool] = mapped_column(default=True)
+    is_superuser: Mapped[bool] = mapped_column(default=False)
+    is_verified: Mapped[bool] = mapped_column(default=False)
+    phone_number: Mapped[str | None]
