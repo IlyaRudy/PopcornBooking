@@ -7,13 +7,13 @@ from fastapi_users.authentication import (
     RedisStrategy,
 )
 import redis.asyncio
+from src.config import settings
 from src.auth.models import User
 from src.auth.manager import get_user_manager
-from fastapi import APIRouter
 
 cookie_transport = CookieTransport(cookie_name="popcornbooking", cookie_max_age=3600)
 
-redis = redis.asyncio.from_url("redis://localhost:6379", decode_responses=True)
+redis = redis.asyncio.from_url(settings.REDIS_URL, decode_responses=True)
 
 
 def get_redis_strategy() -> RedisStrategy:
