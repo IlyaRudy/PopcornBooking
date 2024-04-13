@@ -9,8 +9,6 @@ from src.config import settings
 
 Base = declarative_base()
 
-metadata = MetaData()
-
 
 async_engine = create_async_engine(settings.DATABASE_URL_asyncpg)
 async_session_maker = sessionmaker(
