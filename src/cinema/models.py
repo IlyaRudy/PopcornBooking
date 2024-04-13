@@ -11,4 +11,4 @@ class Cinema(Base):
     name: Mapped[str]
     city: Mapped[str | None]
     city_district: Mapped[str | None]
-    addres: Mapped[str | None]
+    address: Mapped[str | None]
