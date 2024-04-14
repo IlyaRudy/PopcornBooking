@@ -27,3 +27,5 @@ class User(SQLAlchemyBaseUserTableUUID, Base):
     is_superuser: Mapped[bool] = mapped_column(default=False)
     is_verified: Mapped[bool] = mapped_column(default=False)
     phone_number: Mapped[str | None]
+
+    booking: Mapped["Booking"] = relationship(back_populates="user")

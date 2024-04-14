@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
 from datetime import datetime
-from sqlalchemy import ForeignKey
+from sqlalchemy import DateTime, ForeignKey
 from sqlalchemy.orm import relationship, Mapped, mapped_column
 from sqlalchemy.sql import func
 
@@ -23,7 +23,9 @@ class Booking(Base):
         ForeignKey("movie_session.id"), nullable=False
     )
     booked_seats: Mapped[int]
-    booking_time: Mapped[datetime] = mapped_column(server_default=func.now())
+    booking_time: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
     status: Mapped[str]
 
     user: Mapped["User"] = relationship(back_populates="booking")
