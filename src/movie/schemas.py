@@ -4,7 +4,7 @@ from pydantic import BaseModel
 
 class MovieBase(BaseModel):
     title: str
-    description: str | None
+    description: str
     duration: int
 
 
@@ -14,7 +14,7 @@ class MovieCreate(MovieBase):
 
 class MovieRead(MovieBase):
     id: int
-    session: list[dict]
+    # session: list[dict]
 
     class Config:
         from_attributes = True

@@ -12,6 +12,7 @@ class Movie(Base):
     description: Mapped[str]
     duration: Mapped[int]
 
-    session: Mapped["Session"] = relationship(
-        order_by="Session.id", back_populates="movie"
-    )
+    # session: Mapped["Session"] = relationship(
+    #     order_by="Session.id",
+    #     back_populates="movie",
+    # )

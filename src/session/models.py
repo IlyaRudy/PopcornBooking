@@ -15,7 +15,7 @@ class Session(Base):
     cinema_id: Mapped[int] = mapped_column(ForeignKey("cinema.id"))
     start_time: Mapped[datetime]
 
-    movie: Mapped["Movie"] = relationship(back_populates="session")
-    booking: Mapped["Booking"] = relationship(
-        order_by="Booking.id", back_populates="session"
-    )
+    # movie: Mapped["Movie"] = relationship(back_populates="session")
+    # booking: Mapped["Booking"] = relationship(
+    #     order_by="Booking.id", back_populates="session"
+    # )
