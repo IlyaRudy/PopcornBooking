@@ -1,7 +1,12 @@
+from typing import TYPE_CHECKING
+
 from sqlalchemy.orm import relationship, Mapped, mapped_column
 from sqlalchemy.sql import func
 
 from src.database import Base
+
+if TYPE_CHECKING:
+    from src.movie_session.models import MovieSession
 
 
 class Movie(Base):
@@ -12,7 +17,7 @@ class Movie(Base):
     description: Mapped[str]
     duration: Mapped[int]
 
-    # session: Mapped["Session"] = relationship(
-    #     order_by="Session.id",
-    #     back_populates="movie",
-    # )
+    movie_session: Mapped["MovieSession"] = relationship(
+        order_by="MovieSession.id",
+        back_populates="movie",
+    )

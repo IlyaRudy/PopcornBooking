@@ -8,7 +8,7 @@ from alembic import context
 from src.auth.models import User
 from src.cinema.models import Cinema
 from src.movie.models import Movie
-from src.session.models import Session
+from src.movie_session.models import MovieSession
 from src.book.models import Booking
 from src.config import settings
 from src.database import Base

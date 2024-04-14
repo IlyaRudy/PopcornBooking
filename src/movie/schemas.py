@@ -1,6 +1,8 @@
 from datetime import datetime
 from pydantic import BaseModel
 
+# from src.movie_session.models import MovieSession
+
 
 class MovieBase(BaseModel):
     title: str
@@ -14,7 +16,7 @@ class MovieCreate(MovieBase):
 
 class MovieRead(MovieBase):
     id: int
-    # session: list[dict]
+    # movie_session: MovieSession
 
     class Config:
         from_attributes = True

@@ -2,7 +2,7 @@ from datetime import datetime
 from pydantic import BaseModel
 
 from src.auth.models import User
-from src.session.models import Session
+from src.movie_session.models import MovieSession
 
 
 class BookingBase(BaseModel):
@@ -20,7 +20,7 @@ class BookingCreate(BookingBase):
 class BookingRead(BookingBase):
     id: int
     user: User
-    session: Session
+    # movie_session: MovieSession
 
     class Config:
         from_attributes = True
