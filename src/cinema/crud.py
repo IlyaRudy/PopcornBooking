@@ -14,7 +14,7 @@ async def get_cinemas(session: AsyncSession, skip: int = 0, limit: int = 100):
     return result.scalars().all()
 
 
-async def create_cinema(session: AsyncSession, cinema: CinemaCreate) -> CinemaRead:
+async def create_cinema(session: AsyncSession, cinema: CinemaCreate):
     db_cinema = Cinema(**cinema.model_dump())
     session.add(db_cinema)
     await session.commit()
