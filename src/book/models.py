@@ -27,4 +27,4 @@ class Booking(Base):
     status: Mapped[str]
 
     user: Mapped["User"] = relationship(back_populates="booking")
-    session: Mapped["MovieSession"] = relationship(back_populates="booking")
+    movie_session: Mapped["MovieSession"] = relationship(back_populates="booking")

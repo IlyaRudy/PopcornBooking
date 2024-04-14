@@ -9,7 +9,6 @@ from src.database import Base
 
 
 if TYPE_CHECKING:
-    from src.book.models import Booking
     from src.cinema.models import Cinema
     from src.movie.models import Movie
 
@@ -26,6 +25,3 @@ class MovieSession(Base):
 
     movie: Mapped["Movie"] = relationship(back_populates="movie_session")
     cinema: Mapped["Cinema"] = relationship(back_populates="movie_session")
-    booking: Mapped["Booking"] = relationship(
-        order_by="Booking.id", back_populates="movie_session"
-    )

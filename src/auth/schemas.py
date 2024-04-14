@@ -1,7 +1,6 @@
 from datetime import date
 from uuid import UUID
 from fastapi_users import schemas
-from pydantic import BaseModel, EmailStr
 
 
 class UserRead(schemas.BaseUser[UUID]):
