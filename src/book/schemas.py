@@ -23,7 +23,7 @@ class BookingRead(BookingBase):
     session: Session
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class BookingUpdate(BaseModel):

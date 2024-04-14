@@ -21,7 +21,7 @@ class SessionRead(SessionBase):
     bookings: list[Booking]
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class SessionUpdate(BaseModel):

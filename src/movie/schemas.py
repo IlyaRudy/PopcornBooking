@@ -17,7 +17,7 @@ class MovieRead(MovieBase):
     session: list[dict]
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class MovieUpdate(BaseModel):
