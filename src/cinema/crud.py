@@ -1,7 +1,7 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from src.cinema.models import Cinema
-from src.cinema.schemas import CinemaCreate, CinemaUpdate, CinemaRead
+from src.cinema.schemas import CinemaCreate, CinemaUpdate
 
 
 async def get_cinema(session: AsyncSession, cinema_id: int):

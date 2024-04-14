@@ -1,10 +1,15 @@
+from typing import TYPE_CHECKING
+
 from datetime import datetime
 from sqlalchemy import ForeignKey, String
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.sql import func
 from fastapi_users.db import SQLAlchemyBaseUserTableUUID
 
 from src.database import Base
+
+if TYPE_CHECKING:
+    from src.book.models import Booking
 
 
 class User(SQLAlchemyBaseUserTableUUID, Base):
@@ -22,3 +27,5 @@ class User(SQLAlchemyBaseUserTableUUID, Base):
     is_superuser: Mapped[bool] = mapped_column(default=False)
     is_verified: Mapped[bool] = mapped_column(default=False)
     phone_number: Mapped[str | None]
+
+    booking: Mapped["Booking"] = relationship(back_populates="booking")
