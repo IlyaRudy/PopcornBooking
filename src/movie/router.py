@@ -6,14 +6,14 @@ from src.database import get_async_session
 movie_router = APIRouter(prefix="/movie", tags=["Movie"])
 
 
-@movie_router.post("/", response_model=schemas.MovieRead)
+@movie_router.post("", response_model=schemas.MovieRead)
 async def create_movie(
     movie: schemas.MovieCreate, session: AsyncSession = Depends(get_async_session)
 ):
     return await crud.create_movie(session=session, movie=movie)
 
 
-@movie_router.get("/", response_model=list[schemas.MovieRead])
+@movie_router.get("", response_model=list[schemas.MovieRead])
 async def read_movies(
     skip: int = 0, limit: int = 100, session: AsyncSession = Depends(get_async_session)
 ):

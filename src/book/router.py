@@ -6,14 +6,14 @@ from src.database import get_async_session
 booking_router = APIRouter(prefix="/booking", tags=["Booking"])
 
 
-@booking_router.post("/", response_model=schemas.BookingCreate)
+@booking_router.post("", response_model=schemas.BookingCreate)
 async def create_booking(
     booking: schemas.BookingCreate, session: AsyncSession = Depends(get_async_session)
 ):
     return await crud.create_booking(session=session, booking=booking)
 
 
-@booking_router.get("/", response_model=list[schemas.BookingRead])
+@booking_router.get("", response_model=list[schemas.BookingRead])
 async def read_bookings(
     skip: int = 0, limit: int = 100, session: AsyncSession = Depends(get_async_session)
 ):

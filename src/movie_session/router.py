@@ -6,7 +6,7 @@ from src.database import get_async_session
 movie_session_router = APIRouter(prefix="/movie_session", tags=["Movie Session"])
 
 
-@movie_session_router.post("/", response_model=schemas.MovieSessionCreate)
+@movie_session_router.post("", response_model=schemas.MovieSessionCreate)
 async def create_movie_session(
     movie_session: schemas.MovieSessionCreate,
     session: AsyncSession = Depends(get_async_session),
@@ -14,7 +14,7 @@ async def create_movie_session(
     return await crud.create_movie_session(session=session, movie_session=movie_session)
 
 
-@movie_session_router.get("/", response_model=list[schemas.MovieSessionRead])
+@movie_session_router.get("", response_model=list[schemas.MovieSessionRead])
 async def read_movie_sessions(
     skip: int = 0, limit: int = 100, session: AsyncSession = Depends(get_async_session)
 ):
