@@ -1,6 +1,7 @@
 from datetime import datetime
 from pydantic import BaseModel
 
+from src.book.schemas import BookingRead
 from src.cinema.schemas import CinemaRead
 from src.movie.schemas import MovieRead
 
@@ -18,7 +19,7 @@ class MovieSessionRead(MovieSessionBase):
     id: int
     movie: MovieRead
     cinema: CinemaRead
-    # bookings: list[dict]
+    bookings: list["BookingRead"]
 
     class Config:
         from_attributes = True

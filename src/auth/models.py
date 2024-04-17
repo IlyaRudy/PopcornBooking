@@ -28,4 +28,4 @@ class User(SQLAlchemyBaseUserTableUUID, Base):
     is_verified: Mapped[bool] = mapped_column(default=False)
     phone_number: Mapped[str | None]
 
-    booking: Mapped["Booking"] = relationship(back_populates="user")
+    bookings: Mapped[list["Booking"]] = relationship(back_populates="user")

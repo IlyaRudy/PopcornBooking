@@ -3,7 +3,6 @@ from uuid import UUID
 from pydantic import BaseModel
 
 from src.auth.schemas import UserRead
-from src.movie_session.schemas import MovieSessionRead
 
 
 class BookingBase(BaseModel):
@@ -20,7 +19,6 @@ class BookingCreate(BookingBase):
 class BookingRead(BookingBase):
     id: int
     user: UserRead
-    movie_session: MovieSessionRead
 
     class Config:
         from_attributes = True

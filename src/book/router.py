@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
-from src.book import crud, schemas
+from src.book import crud, schemas, schemas_to_many
 from src.database import get_async_session
 
 booking_router = APIRouter(prefix="/booking", tags=["Booking"])
@@ -13,7 +13,7 @@ async def create_booking(
     return await crud.create_booking(session=session, booking=booking)
 
 
-@booking_router.get("", response_model=list[schemas.BookingRead])
+@booking_router.get("", response_model=list[schemas_to_many.BookingRead])
 async def read_bookings(
     skip: int = 0, limit: int = 100, session: AsyncSession = Depends(get_async_session)
 ):
@@ -21,7 +21,7 @@ async def read_bookings(
     return bookings
 
 
-@booking_router.get("/{booking_id}", response_model=schemas.BookingRead)
+@booking_router.get("/{booking_id}", response_model=schemas_to_many.BookingRead)
 async def read_booking(
     booking_id: int, session: AsyncSession = Depends(get_async_session)
 ):

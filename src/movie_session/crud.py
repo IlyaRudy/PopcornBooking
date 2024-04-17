@@ -1,6 +1,7 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from sqlalchemy.orm import joinedload, selectinload
+from src.book.models import Booking
 from src.movie_session.models import MovieSession
 from src.movie_session.schemas import (
     MovieSessionCreate,
@@ -11,7 +12,11 @@ from src.movie_session.schemas import (
 async def get_movie_session(session: AsyncSession, movie_session_id: int):
     result = await session.execute(
         select(MovieSession)
-        .options(joinedload(MovieSession.movie), selectinload(MovieSession.cinema))
+        .options(
+            joinedload(MovieSession.movie),
+            selectinload(MovieSession.cinema),
+            selectinload(MovieSession.bookings).joinedload(Booking.user),
+        )
         .filter(MovieSession.id == movie_session_id)
     )
     return result.scalars().first()
@@ -20,7 +25,11 @@ async def get_movie_session(session: AsyncSession, movie_session_id: int):
 async def get_movie_sessions(session: AsyncSession, skip: int = 0, limit: int = 100):
     result = await session.execute(
         select(MovieSession)
-        .options(joinedload(MovieSession.movie), selectinload(MovieSession.cinema))
+        .options(
+            joinedload(MovieSession.movie),
+            selectinload(MovieSession.cinema),
+            selectinload(MovieSession.bookings).joinedload(Booking.user),
+        )
         .offset(skip)
         .limit(limit)
     )
