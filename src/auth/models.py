@@ -29,3 +29,6 @@ class User(SQLAlchemyBaseUserTableUUID, Base):
     phone_number: Mapped[str | None]
 
     bookings: Mapped[list["Booking"]] = relationship(back_populates="user")
+
+    def __str__(self):
+        return f"{self.email}"
