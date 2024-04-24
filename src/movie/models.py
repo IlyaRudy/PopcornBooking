@@ -21,3 +21,6 @@ class Movie(Base):
         order_by="movie_session.c.id",
         back_populates="movie",
     )
+
+    def __str__(self):
+        return f"Movie: {self.title}"
