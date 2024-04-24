@@ -27,3 +27,6 @@ class MovieSession(Base):
     movie: Mapped["Movie"] = relationship(back_populates="movie_session")
     cinema: Mapped["Cinema"] = relationship(back_populates="movie_session")
     bookings: Mapped[list["Booking"]] = relationship(back_populates="movie_session")
+
+    def __str__(self):
+        return f"MovieSession: {self.id}"

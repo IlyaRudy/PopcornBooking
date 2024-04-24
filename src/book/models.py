@@ -30,3 +30,6 @@ class Booking(Base):
 
     user: Mapped["User"] = relationship(back_populates="bookings")
     movie_session: Mapped["MovieSession"] = relationship(back_populates="bookings")
+
+    def __str__(self):
+        return f"Booking: {self.id}"

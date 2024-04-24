@@ -19,3 +19,6 @@ class Cinema(Base):
     address: Mapped[str | None]
 
     movie_session: Mapped["MovieSession"] = relationship(back_populates="cinema")
+
+    def __str__(self):
+        return f"Cinema: {self.name} - city: {self.city}"
